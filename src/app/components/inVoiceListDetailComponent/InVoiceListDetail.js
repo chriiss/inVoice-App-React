@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import Styles from "../../styles/App.module.scss";
 import InVoiceListDetailBack from "./inVoiceListDetailBack/InVoiceListDetailBack";
 import InVoiceListDetailHeader from "./inVoiceListDetailHeader/InVoiceListDetailHeader";
