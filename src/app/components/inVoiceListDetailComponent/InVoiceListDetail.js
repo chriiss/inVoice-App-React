@@ -15,7 +15,7 @@ const InVoiceListDetail = ({ detail, closeModalDetail, setInvoice }) => {
 
     const changeStatus = (status) => {
         setInvoice(oldValues => oldValues.map(item => {
-            if(item === status && item.status === "draft" || item=== status && item.status === "pending") {
+            if((item === status && item.status === "draft") || (item === status && item.status === "pending")) {
                 return { ...item, status: "paid"};
             } else {
                 return item;
