@@ -1,0 +1,696 @@
+@use "./variables.scss" as var;
+
+@mixin themesStyle {
+    .dark {
+        background-color: var.$secondary_color;
+        color: var.$primary_color;
+        transition: all 0.5s ease-in-out;
+
+        input,
+        select,
+        .mymodal, .mymodalDetail {
+            background-color: rgb(41, 41, 41);
+            color: var.$primary_color;
+            border: 1px solid var.$secondary_color;
+            transition: all 0.5s ease-in-out;
+        }
+        .invoice_detail {
+            &_back {
+                button {
+                    color: var.$primary_color;
+                }
+            }
+            &_header {
+                &_status {
+                    span:nth-child(1) {
+                        color: var.$primary_color;
+                    }
+                }
+            }
+
+            &_section_two {
+                &_bloc {
+                    &_date {
+                        color: var.$primary_color; 
+                    }
+                }
+                &_bloc:nth-child(2),
+                &_bloc:nth-child(3) {
+                    div:nth-child(2) {
+                        color: var.$primary_color; 
+                    }
+                }
+            }
+            &_section_items {
+                &_children {
+                    div:nth-child(2) {
+                        color: var.$primary_color;
+                    }
+                }
+            }
+        }
+        .form {
+            &_status {
+                select {
+                    option:nth-child(2) {
+                        color: var.$primary_color;
+                    }
+                }
+            }
+        }
+        
+
+        .draft {
+            color: var.$primary_color;
+        }
+    }
+
+    .light {
+        background-color: var.$primary_color;
+        color: var.$secondary_color;
+        transition: all 0.5s ease-in-out;
+
+        input,
+        select,
+        .mymodal, .mymodalDetail {
+            transition: all 0.5s ease-in-out;
+        }
+    }
+}
+
+@mixin modalStyle {
+    .mymodal {
+        position: absolute;
+        top: 0%;
+        left: 6.5rem;
+        width: 44rem;
+        border: 1px solid #ccc;
+        background: #fff;
+        overflow: scroll;
+        border-radius: 4px;
+        outline: none;
+        padding: 1.5rem;
+        animation: modalAnimation .75s;
+        z-index: 2;
+
+        @media(max-width: var.$breakpoint) {
+            width: 80%;
+            left: 0;
+            top: 10%;
+        }
+    }
+
+    .myoverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.75);
+        overflow-y: scroll;
+        z-index: 2;
+    }
+
+    .ReactModal__Overlay {
+        opacity: 0;
+        transition: all 500ms ease-in-out;
+        transform: translateX(-100px);
+    }
+
+    .ReactModal__Overlay--after-open {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+
+    .ReactModal__Overlay--before-close {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+}
+
+@mixin modalStyleDetail {
+    .mymodalDetail {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 65%;
+        border: 1px solid #ccc;
+        background: #fff;
+        overflow: scroll;
+        border-radius: 4px;
+        outline: none;
+        padding: 1.5rem;
+        animation: modalAnimation .75s;
+        margin: auto;
+        z-index: 2;
+
+        @media(max-width: var.$breakpoint) {
+            left: 0;
+            right: 0;
+            top: 10%;
+            margin: auto;
+        }
+    }
+}
+
+@mixin globalButtonStyle {
+    padding: 1rem 1.5rem;
+    border-radius: 10rem;
+    border: none;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+@mixin globalButtonColor {
+    background-color: var.$form_bg_button_save;
+    color: var.$primary_color;
+}
+
+
+@mixin asideStyle {
+    aside {
+        position: sticky;
+        top: 0px;
+        z-index: 20;
+        display: flex;
+        -webkit-box-align: center;
+        background-color: var.$detail_aside_footer_bg;
+        height: 100vh;
+        width: 103px;
+        border-radius: 0px 20px 20px 0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        @media(max-width: var.$breakpoint) {
+            height: 0%;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            border-radius: 0px 0px 0px 0px;
+        }
+
+        .bloc {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            width: 100%;
+            align-items: center;
+
+            @media(max-width: var.$breakpoint) {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                gap: 1rem;
+                width: 150px;
+            }
+
+            div:nth-child(2) {
+                border-top: 1px solid var.$primary_color;
+                padding-top: 1rem;
+                padding-bottom: 2rem;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+
+                @media(max-width: var.$breakpoint) {
+                    border: none;
+                    border-left: 1px solid var.$primary_color;
+                    height: 4.3vh;
+                }
+
+                img {
+                    height: 55px;
+                    width: 55px;
+                    border-radius: 50%;
+                }
+            }
+
+            &_darkModeButton {
+                background: none;
+                border: none;
+            }
+        }
+    }
+}
+
+@mixin headerStyle {
+    .section_header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80vw;
+        gap: 5rem;
+        padding-top: 3rem;
+        padding-bottom: calc(3rem/2);
+
+        @media(max-width: var.$breakpoint) {
+            width: 95%;
+            justify-content: space-evenly;
+            padding-left: .5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-bottom: calc(3rem);
+        }
+
+        &_results {
+            color: var.$form_color_label;
+        }
+
+        div:nth-child(1) {
+            flex: 0.25;
+
+            @media(max-width: var.$breakpoint) {
+                flex: 0;
+                order: 1;
+            }
+        }
+
+        div:nth-child(2) {
+            @media(max-width: var.$breakpoint) {
+                order: 3;
+            }
+        }
+
+        div:nth-child(3) {
+            button {
+                @include globalButtonStyle();
+                @include globalButtonColor();
+                display: flex;
+                align-items: center;
+                gap: .5rem;
+            }
+            @media(max-width: var.$breakpoint) {
+                order: 2;
+            }
+        }
+
+        &_filter_status_label {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+
+            &_svg_arrow_top {
+                transform: rotate(180deg);
+            }
+        }
+        &_filter_status_render {
+            line-height: 1.5rem;
+            position: absolute;
+            z-index: 1;
+            display: none;
+            padding: .5rem;
+            cursor: pointer;
+
+            input[type=checkbox]{
+                cursor: pointer;
+                accent-color: var.$form_color_subtitle;
+            }
+        }
+        &_show {
+            display: block;
+        }
+    }
+}
+
+@mixin formsStyle {
+    .form {
+        &_subtitle {
+            color: var.$form_color_subtitle;
+        }
+
+        &_group,
+        &_group_item {
+            margin-top: 2rem;
+
+            label {
+                color: var.$form_color_label;
+            }
+
+            input,
+            select {
+                border: 1px solid var.$form_color_input;
+                border-radius: 4px;
+                padding: 1rem 1.25rem;
+                font-size: 0.75rem;
+                line-height: 1.125;
+                letter-spacing: -0.25px;
+                outline: none;
+                z-index: 2;
+                &::placeholder {
+                    font-weight: bold;
+                    font-size: 1rem;
+                }
+                
+                &:focus {
+                    border: 1px solid var.$form_color_subtitle;
+                }
+            }
+            .error {
+                background-color: var.$form_color_error;
+                position: relative;
+                margin-top: -12px;
+                z-index: 1;
+                padding-top: .5rem;
+                padding-bottom: .5rem;
+                padding-left: .5rem;
+                color: var.$primary_color;
+                font-weight: 700;
+                font-size: 12px;
+            } 
+        }
+
+        &_group:nth-child(3),
+        &_group:nth-child(6),
+        &_group:nth-child(7),
+        &_group:nth-child(8),
+        &_group:nth-child(11) {
+            display: flex;
+            flex-direction: column;
+            gap: var.$space_form;
+        }
+
+        &_group:nth-child(4),
+        &_group:nth-child(9),
+        &_group:nth-child(10),
+        &_group_item {
+            display: flex;
+            gap: var.$space_form;
+            align-items: center;
+
+            @media(max-width: var.$breakpoint) {
+                flex-wrap: wrap;
+            }
+
+            div {
+                display: flex;
+                flex-direction: column;
+                gap: var.$space_form;
+                width: 100%;
+            }
+        }
+
+        &_item {
+            div {
+                display: flex;
+                justify-content: center;
+
+                button {
+                    border: none;
+                    background: none;
+                    color: var.$form_color_label;
+                }
+            }
+        }
+
+        &_buttons {
+            display: flex;
+            align-items: center;
+            margin-top: calc(2rem * 2.5);
+
+            div:nth-child(1) {
+                button {
+                    border: none;
+                    background: none;
+                    color: var.$form_color_label;
+                    cursor: pointer;
+                }
+            }
+
+            div:nth-child(2) {
+                display: flex;
+                justify-content: flex-end;
+                width: 100%;
+                gap: calc(var.$space_form * 1.5);
+
+                input[type="submit"] {
+                    @include globalButtonStyle();
+                    @include globalButtonColor();
+                }
+
+            }
+        }
+        &_status {
+            select {
+                width: 100%;
+
+                option:nth-child(1) {
+                    color: var.$status_pending_color;
+                }
+                option:nth-child(2) {
+                    color: var.$status_draft_color;
+                }
+            }
+        }
+    }
+}
+
+
+@mixin invoiceListStyle {
+    .invoice_list {
+        display: flex;
+        flex-direction: column;
+        -webkit-box-align: center;
+        align-items: center;
+        width: 100%;
+        margin-top: 1rem;
+        font-size: 18px;
+
+        &_ticket {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            grid-template-rows: min-content;
+            -webkit-box-align: center;
+            align-items: center;
+            width: 42.75rem;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            padding: 2.5rem;
+            text-decoration: none;
+            transition: border 0.3s ease 0s, background 0.3s ease 0s;
+            cursor: pointer;
+            word-wrap: break-word;
+            box-shadow: 0px 20px 18px -12px rgba(0,0,0,0.33);
+
+            @media(max-width: var.$breakpoint) {
+                width: 70%;
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+
+            &:hover {
+                border: 1px solid var.$form_color_subtitle;
+            }
+
+            &_hashtag {
+                color: var.$form_color_label;
+            }
+
+            div {
+                @media(max-width: var.$breakpoint) {
+                   line-height: 2rem;
+                }
+            }
+
+            div:nth-child(2),
+            div:nth-child(3) {
+                color: var.$invoice_list_color;
+                font-size: 14px;
+            }
+            
+            div:nth-child(4) {
+                margin-left: 1.5rem;
+                @media(max-width: var.$breakpoint) {
+                    margin-left: 0;
+                }
+            }
+            div:nth-child(6) {
+                display: flex;
+                align-items: center;
+                margin-left: 2rem;
+                
+                @media(max-width: var.$breakpoint) {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@mixin invoiceDetailStyle {
+    .invoice_detail {
+        color: var.$secondary_color;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        padding: 1.5rem;
+
+        &_back {
+            svg {
+                vertical-align: top;
+            }
+
+            button {
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+        }
+
+        &_header {
+            display: flex;
+            align-items: center;
+            box-shadow: rgb(72 84 159 / 20%) 0px 10px 10px -10px;
+            padding-bottom: 1.5rem;
+            
+            @media(max-width: var.$breakpoint) {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            &_status {
+                display: flex;
+                gap: 2rem;
+                flex: .85;
+            }
+
+            &_buttons {
+                display: flex;
+                gap: 1.5rem;
+                flex-wrap: wrap;
+
+                button {
+                    border: none;
+                    cursor: pointer;
+                }
+                button:nth-child(1),
+                button:nth-child(2) {
+                    border-radius: 10rem;
+                    padding: 16px 24px;
+                    transition: all .75s ease-in-out; 
+                }
+                button:nth-child(1) {
+                    background-color: var.$detail_delete_button_color;
+                    color: var.$primary_color; 
+                    &:hover {
+                        border: 1px solid var.$detail_delete_button_color;
+                        background: none;
+                        color: var.$detail_delete_button_color;
+                    }
+                }
+                button:nth-child(2) {
+                    background-color: var.$form_bg_button_save;
+                    color: var.$primary_color;
+                    &:hover {
+                        border: 1px solid var.$form_bg_button_save;
+                        background: none;
+                        color: var.$form_bg_button_save;
+                    }
+                }
+
+                &_hide {
+                    display: none;
+                }
+            }
+        }
+
+        &_section_one {
+            display: flex;
+            color: var.$invoice_list_color;
+            justify-content: space-between;
+            width: 85%;
+
+            @media(max-width: var.$breakpoint) {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            div:nth-child(1) {
+                width: 75%;
+                word-wrap: break-word;
+            }
+
+            div:nth-child(2) {
+                line-height: 1.5rem;
+            }
+        }
+
+        &_section_two {
+            display: flex;
+            justify-content: space-between;
+            width: 81%;
+            @media(max-width: var.$breakpoint) {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            &_bloc {
+                display: flex;
+                flex-direction: column;
+                &_label {
+                    color: var.$invoice_list_color;
+                }
+                &_date {
+                    font-size: 22px;
+                }
+            }
+
+            &_bloc:nth-child(1) {
+                gap: 2rem; 
+            }
+            &_bloc:nth-child(2),
+            &_bloc:nth-child(3) {
+                gap: .5rem;
+            }
+            &_bloc:nth-child(2) {
+                width: 50%; 
+            }
+        }
+
+        &_section_items {
+            display: flex;
+            padding-top: 5rem;
+            justify-content: center;
+            gap: 1rem;
+
+            @media(max-width: var.$breakpoint) {
+                flex-direction: column;
+                padding-top: calc(5rem/2);
+                gap: 0.5rem;
+            }
+
+            &_children {
+                line-height: 3rem;
+                width: 30%;
+                word-wrap: break-word;
+
+                div:first-child {
+                    color: var.$form_color_label;
+                }
+                div:last-child {
+                    line-height: 1.5rem;
+                }
+            }
+        }
+
+        &_footer {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            background-color: var.$detail_aside_footer_bg;
+            padding: 2rem;
+            justify-content: space-between;
+            color: var.$primary_color;
+            gap: 1rem;
+            border-radius: 0px 0px 10px 10px;
+
+            div:last-child {
+                font-size: clamp(1rem, 2.5vw, 1.5rem);
+            }
+        }
+    }
+}

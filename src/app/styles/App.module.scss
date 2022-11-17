@@ -1,0 +1,57 @@
+@use "./variables.scss" as var;
+@use "./mixins.scss" as mixin;
+
+* {
+    @include mixin.themesStyle;
+    font-family: 'Spartan', sans-serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.body {
+    display:flex;
+    gap: 2rem;
+
+    @media(max-width: var.$breakpoint) {
+        flex-direction: column;
+    }
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+h1  {
+    font-size: 2rem;
+}
+
+h3 {
+    margin-top: 2rem;
+    color: #777F98;
+    font-size: 1.25rem;
+}
+
+.pending {
+    color: var.$status_pending_color;
+} 
+.draft {
+    color: var.$status_draft_color;
+} 
+.paid {
+    color: var.$status_paid_color;
+} 
+
+@include mixin.modalStyle;
+@include mixin.modalStyleDetail;
+@include mixin.asideStyle;
+@include mixin.headerStyle;
+@include mixin.formsStyle;
+@include mixin.invoiceListStyle;
+@include mixin.invoiceDetailStyle;

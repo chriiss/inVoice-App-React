@@ -1,0 +1,109 @@
+{
+    "headerComponent": {
+        "title": "Invoices",
+        "filterStatusLabel": "Filter by status",
+        "addInvoice": "New invoice",
+        "result": "Result",
+        "results": "Results",
+
+        "filterStatusRender": [
+            {"value":"all"},
+            {"value":"paid"},
+            {"value":"pending"},
+            {"value":"draft"}
+        ]
+    },
+
+    "formsComponent": {
+        "title": "Create Invoices",
+        "errors": {
+            "fieldEmpty": "Empty Field",
+            "fieldEmptyOrLetter": "Empty fields or enter letters",
+            "fieldEmptyOrNumber": "Empty fields or enter numbers",
+            "fieldEmptyOrMail": "Empty fields or enter mail",
+            "fieldEnterDate": "Enter a date"
+        },
+        "from": {
+            "label": {
+                "billFrom": "Bill From"
+            }
+        },
+        "to": {
+            "label": {
+                "billTo": "Bill To"
+            }
+        },
+        "client": {
+            "label": {
+                "name": "Client's Name",
+                "mail": "Client's Email"
+            }
+        },
+        "field": {
+            "label": {
+                "streetAdress": "Street Adress",
+                "city": "City",
+                "postCode": "Post Code",
+                "countries": "Countries",
+                "date": "Invoice date",
+                "paymentTerm": "Payment term",
+                "description": "Description",
+                "itm": "Item name",
+                "qty": "qty",
+                "price": "Price",
+                "total": "Total"
+            } 
+        },
+        "selectPayment": [
+            {"option": "Net 1 day"},
+            {"option": "Net 7 days"},
+            {"option": "Net 14 days"},
+            {"option": "Net 30 days"}
+        ],
+        "subTitle": {
+            "itemList": "Item list",
+            "status": "Status"
+        },
+        "selectStatus": [
+            {"option": "pending"},
+            {"option": "draft"}
+        ],
+        "formButtons": {
+            "discard": "Discard",
+            "submit": "Save & Send"
+        }
+    },
+
+    "inVoiceListDetailComponent": {
+        "backButton": {
+            "name": "Go Back"
+        },
+        "header": {
+            "status": "Status",
+            "buttons": {
+                "edit": "Edit",
+                "delete": "Delete",
+                "mark": "Mark as Paid"
+            } 
+        },
+        "sectionTwo": {
+            "label": {
+                "date": "Invoice date",
+                "payment": "Payment due",
+                "to": "Bill to",
+                "send": "Send to"
+            }
+        },
+        "items": {
+            "label": {
+                "itm": "Item name",
+                "qty": "qty",
+                "price": "Price",
+                "total": "Total"
+            }
+        },
+        "footer": {
+            "amount": "Amount due"
+        }
+    }
+}
