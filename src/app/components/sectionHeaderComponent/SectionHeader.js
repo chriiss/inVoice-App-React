@@ -7,14 +7,19 @@ const SectionHeader = ({openModal, inVoice, dataInvoice, setDataInvoice}) => {
     const [statusFilter, setStatusFilter] = useState("all");
     const [openFilterStatus, setOpenFilterStatus] = useState(false);
 
+    
+
     useEffect(() => {
-        if (statusFilter === "all") {
-          setDataInvoice(inVoice);
-        } else {
-          const filteredStatus = inVoice.filter(status => status.status === statusFilter);
-          setDataInvoice(filteredStatus);
-        }
-    }, [statusFilter, inVoice]);
+        const dataStatusFilterCheck = () => {
+            if (statusFilter === "all") {
+                setDataInvoice(inVoice);
+            } else {
+                const filteredStatus = inVoice.filter(status => status.status === statusFilter);
+                setDataInvoice(filteredStatus);
+            }
+        } 
+        dataStatusFilterCheck();
+    }, [statusFilter, inVoice, setDataInvoice]);
 
     const handleFilterStatus =({target}) => {
         setStatusFilter(target.value);
