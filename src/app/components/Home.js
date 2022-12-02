@@ -29,17 +29,20 @@ const Home = () => {
     }
 
     useEffect(() => {
-        if (inVoice.length > 0) {
-            localStorage.setItem('form', JSON.stringify(inVoice));
-        }
-    }, [inVoice])
-
-    useEffect(() => {
-        const items = JSON.parse(localStorage.getItem('form'));
+        const items = JSON.parse(localStorage.getItem("form"));
         if (items) {
          setInvoice(items);
         }
     }, []);
+
+    useEffect(() => {
+        if (inVoice.length > 0) {
+            localStorage.setItem("form", JSON.stringify(inVoice));
+        }
+        if (inVoice.length === 0) {
+            localStorage.removeItem("form");
+        }
+    }, [inVoice])
 
     const inVoiceDetail = (id) => {
         setDetail(id);
