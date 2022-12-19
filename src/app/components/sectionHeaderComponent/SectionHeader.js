@@ -7,8 +7,6 @@ const SectionHeader = ({openModal, inVoice, dataInvoice, setDataInvoice}) => {
     const [statusFilter, setStatusFilter] = useState("all");
     const [openFilterStatus, setOpenFilterStatus] = useState(false);
 
-    
-
     useEffect(() => {
         const dataStatusFilterCheck = () => {
             if (statusFilter === "all") {
@@ -17,7 +15,7 @@ const SectionHeader = ({openModal, inVoice, dataInvoice, setDataInvoice}) => {
                 const filteredStatus = inVoice.filter(status => status.status === statusFilter);
                 setDataInvoice(filteredStatus);
             }
-        } 
+        }
         dataStatusFilterCheck();
     }, [statusFilter, inVoice, setDataInvoice]);
 

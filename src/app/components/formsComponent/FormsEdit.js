@@ -4,19 +4,24 @@ import InputFrom from "./inputFromComponent/InputFrom";
 import InputItem from './InputItemComponent/InputItem';
 import InputTo from "./inputToComponent/InputTo";
 
-
-const Forms = ({ closeModal, inVoice, setInvoice, register, handleSubmit, watch, errors }) => {
+const FormsEdit = ({ closeModalEdit, closeModalDetail, inVoice, setInvoice, register, handleSubmit, watch, errors }) => {
     const formsComponentData = DataJson.formsComponent;
 
-    const onSubmit = (data) => {
-        const addInVoice = [...inVoice, data].reverse();
-        setInvoice(addInVoice);
-        closeModal();
+    const onEditSave = (data) => {
+        const updatedInvoice = inVoice.map((item) => {
+            if (item.invoiceDate === data.invoiceDate) {
+                return { ...item, ...data };
+            }
+            return item;
+        });
+        setInvoice(updatedInvoice);
+        closeModalEdit();
+        closeModalDetail();
     }
 
     return (
         <section>
-            <form className={Styles.form} onSubmit={handleSubmit(onSubmit)}>
+            <form className={Styles.form} onSubmit={handleSubmit(onEditSave)}>
                 <h2>{formsComponentData.title}</h2>
                 <InputFrom register={register} errors={errors} />
                 <InputTo register={register} errors={errors} />
@@ -36,10 +41,10 @@ const Forms = ({ closeModal, inVoice, setInvoice, register, handleSubmit, watch,
                 </div>
                 <div className={Styles.form_buttons}>
                     <div>
-                        <button className={Styles.bold} onClick={closeModal} type="button">{formsComponentData.formButtons.discard}</button>
+                        <button className={Styles.bold} onClick={closeModalEdit} type="button">{formsComponentData.formButtons.discard}</button>
                     </div>
                     <div>
-                        <input className={Styles.bold} type="submit" value={formsComponentData.formButtons.submit} />
+                        <input className={Styles.bold} type="submit" value={formsComponentData.formButtons.edit} />
                     </div>
                 </div>
             </form>
@@ -47,4 +52,4 @@ const Forms = ({ closeModal, inVoice, setInvoice, register, handleSubmit, watch,
     )
 }
 
-export default Forms;
+export default FormsEdit;

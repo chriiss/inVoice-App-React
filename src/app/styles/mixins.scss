@@ -569,7 +569,8 @@
                     cursor: pointer;
                 }
                 button:nth-child(1),
-                button:nth-child(2) {
+                button:nth-child(2),
+                button:nth-child(3) {
                     border-radius: 10rem;
                     padding: 16px 24px;
                     transition: all .75s ease-in-out; 
@@ -584,6 +585,9 @@
                     }
                 }
                 button:nth-child(2) {
+                    background-color: none;
+                }
+                button:nth-child(3) {
                     background-color: var.$form_bg_button_save;
                     color: var.$primary_color;
                     &:hover {

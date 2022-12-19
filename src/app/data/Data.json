@@ -70,7 +70,8 @@
         ],
         "formButtons": {
             "discard": "Discard",
-            "submit": "Save & Send"
+            "submit": "Save & Send",
+            "edit": "Save & Edit"
         }
     },
 

@@ -6,7 +6,7 @@ import InVoiceListDetailSectionTwo from "./inVoiceListDetailSectionTwo/InVoiceLi
 import InVoiceListDetailItems from "./inVoiceListDetailItems/InVoiceListDetailItems";
 import InVoicelistDetailFooter from "./inVoiceListDetailFooter/InVoiceListDetailFooter";
 
-const InVoiceListDetail = ({ detail, closeModalDetail, setInvoice }) => {
+const InVoiceListDetail = ({ detail, closeModalDetail, setInvoice, openModalEdit, setValue }) => {
 
     const removeInVoice = (item) => {
         setInvoice(oldValues => oldValues.filter(data => data !== item));
@@ -24,10 +24,31 @@ const InVoiceListDetail = ({ detail, closeModalDetail, setInvoice }) => {
         closeModalDetail();
     }
 
+    const editInVoice = (item) => {
+        setValue("streetFrom", item.streetFrom);
+        setValue("cityFrom", item.cityFrom);
+        setValue("postCodeFrom", item.postCodeFrom);
+        setValue("countriesFrom", item.countriesFrom);
+        setValue("streetTo", item.streetTo);
+        setValue("name", item.name);
+        setValue("mail", item.mail);
+        setValue("cityTo", item.cityTo);
+        setValue("postCodeTo", item.postCodeTo);
+        setValue("countriesTo", item.countriesTo);
+        setValue("invoiceDate", item.invoiceDate);
+        setValue("terms", item.terms);
+        setValue("description", item.description);
+        setValue("itm", item.itm);
+        setValue("qty", item.qty);
+        setValue("price", item.price);
+        setValue("status", item.status);
+        openModalEdit();
+    }
+
     return (
         <div className={Styles.invoice_detail}>
             <InVoiceListDetailBack closeModalDetail={closeModalDetail} />
-            <InVoiceListDetailHeader detail={detail} removeInVoice={removeInVoice} changeStatus={changeStatus} />
+            <InVoiceListDetailHeader detail={detail} removeInVoice={removeInVoice} changeStatus={changeStatus} editInVoice={editInVoice} />
             <InVoiceListDetailSectionOne detail={detail} />
             <InVoiceListDetailSectionTwo detail={detail} />
             <InVoiceListDetailItems detail={detail} />

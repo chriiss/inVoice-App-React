@@ -1,7 +1,7 @@
 import DataJson from "../../../data/Data.json";
 import Styles from "../../../styles/App.module.scss";
 
-const InVoiceListDetailHeader = ({detail, removeInVoice, changeStatus, isMakePaid}) => {
+const InVoiceListDetailHeader = ({detail, removeInVoice, changeStatus, editInVoice}) => {
     const detailHeaderComponentData = DataJson.inVoiceListDetailComponent.header;
     return(
         <div className={Styles.invoice_detail_header}>
@@ -13,6 +13,7 @@ const InVoiceListDetailHeader = ({detail, removeInVoice, changeStatus, isMakePai
                 </div>
                 <div className={Styles.invoice_detail_header_buttons}>
                     <button type="button" className={Styles.bold} onClick={() => removeInVoice(detail)}>{detailHeaderComponentData.buttons.delete}</button>
+                    <button type="button" className={Styles.bold} onClick={() => editInVoice(detail)}>{detailHeaderComponentData.buttons.edit}</button>
                     <button type="button" className={Styles.bold} onClick={() => changeStatus(detail)}>{detailHeaderComponentData.buttons.mark}</button>
                 </div>
             </div>

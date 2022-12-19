@@ -9,7 +9,7 @@ const InVoiceList = ({dataInvoice, inVoiceDetail, openModalDetail}) => {
                 const { id } = data;
                 return (
                     <div key={index} className={Styles.invoice_list} onClick={() => {
-                        inVoiceDetail(data) 
+                        inVoiceDetail(data)
                         openModalDetail()}}>
                         <div className={Styles.invoice_list_ticket}>
                             <div className={Styles.bold}>
