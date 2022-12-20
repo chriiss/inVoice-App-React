@@ -18,3 +18,4 @@ WebApp Project link : https://thriving-biscotti-24b107.netlify.app/
 - Sort invoices by status
 - Dark mode/Light mode
 - Open the form with a modal
+- Status change (pending, draft per paid)
