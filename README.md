@@ -17,3 +17,4 @@ WebApp Project link : https://thriving-biscotti-24b107.netlify.app/
 - Delete invoices
 - Sort invoices by status
 - Dark mode/Light mode
+- Open the form with a modal
